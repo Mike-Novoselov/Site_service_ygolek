@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Сделать заказ
+{% endblock %}
+
+{% block body %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h1 class="text-center mb-4">Оформление заказа</h1>
+        <form method="POST">
+          <div class="form-group">
+            <label for="supplier">Поставщик:</label>
+            <select class="form-control" id="supplier" name="supplier">
+              {% for supplier in suppliers %}
+                <option value="{{ supplier.id }}">{{ supplier.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="coal_brand">Марка угля:</label>
+            <select class="form-control" id="coal_brand" name="coal_brand">
+              {% for coal_brand in coal_brands %}
+                <option value="{{ coal_brand.id }}">{{ coal_brand.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="quantity">Количество тонн:</label>
+            <input type="number" class="form-control" id="quantity" name="quantity" min="1" max="100" required>
+          </div>
+          <div class="form-group">
+            <label for="address">Адрес доставки:</label>
+            <input type="text" class="form-control" id="address" name="address" required>
+          </div>
+          <hr>
+          <div class="form-group">
+            <label for="name">Имя:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Пароль:</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top: 10px;">Оформить заказ</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
